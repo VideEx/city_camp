@@ -1,8 +1,8 @@
 {
-  "name": "control11",
+  "name": "city_camp",
   "version": "1.0.0",
-  "description": "module 6 \"Tea\"",
-  "main": "index.js",
+  "description": "",
+  "main": "app.js",
   "directories": {
     "doc": "doc"
   },
@@ -21,6 +21,7 @@
     "gulp": "^5.0.0",
     "gulp-clean-css": "^4.3.0",
     "gulp-less": "^5.0.0",
+    "gulp-minify": "^3.1.0",
     "gulp-rename": "^2.0.0",
     "gulp-watch": "^4.0.1",
     "less": "^4.2.0"
