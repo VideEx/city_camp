@@ -81,17 +81,17 @@ $(document).ready(() => {
             type: "POST",
             url: "https://api.telegram.org/bot" + token + "/sendMessage?chat_id=" + chatId,
             data: "parse_mode=HTML&text=" + encodeURIComponent(text),
-            success: function (data) {
-
-            }
-                .done(function (msg) {
-                    if (msg.success) {
-                        orderGratitude.show();
-                        orderInfo.hide();
-                    } else {
-                        alert('Приносим свои извинения, но возникли какие-то проблемы, свяжитесь, пожалуйста, с нами, любыми другими способами!');
-                    }
-                })
+            // success: function (data) {
+            //
+            // }
+            //     .done(function (msg) {
+            //         if (msg.success) {
+            //             orderGratitude.show();
+            //             orderInfo.hide();
+            //         } else {
+            //             alert('Приносим свои извинения, но возникли какие-то проблемы, свяжитесь, пожалуйста, с нами, любыми другими способами!');
+            //         }
+            //     })
         });
 
     });
