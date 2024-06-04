@@ -71,9 +71,9 @@ $(document).ready(() => {
 
     $('#send-order-form').on('click', function () {
 
-        let f_phone = $('#user-name').val();
-        let f_name = $('#user-phone').val();
-        let text = 'Новая заявка в лагерь:\n ' + f_name + ',\n ' + f_phone;
+        let f_name = $('#user-name').val();
+        let f_phone = $('#user-phone').val();
+        let text = 'Новая заявка в лагерь:\n' + f_name + '\n' + f_phone;
 
         //вызываем функцию отправки в Telegram
         send_tg(text);
