@@ -74,7 +74,7 @@ $(document).ready(() => {
     let f_age = $('#user-age').val();
     let text = 'Новая заявка в лагерь:\n' + 'Имя - ' + f_name + '\n' + 'Номер телефона - ' + f_phone + '\n' + 'Возраст ребенка - ' + f_age;
 
-    $('#send-order-form').on('click', function () {
+    $('#send-order').on('click', function () {
 
         //вызываем функцию отправки в Telegram
         $.ajax({
