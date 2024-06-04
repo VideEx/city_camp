@@ -1,9 +1,9 @@
 $(document).ready(() => {
-    $( function() {
-        $( "#accordion" ).accordion();
-    } );
+    $(function () {
+        $("#accordion").accordion();
+    });
 
-    (function() {
+    (function () {
         var $lightbox = $("<div class='lightbox'></div>");
         var $img = $("<img>");
         var $caption = $("<p class='caption'></p>");
@@ -18,7 +18,7 @@ $(document).ready(() => {
 
         $('body').append($lightbox);
 
-        $('.lightbox-gallery img').click(function(e) {
+        $('.lightbox-gallery img').click(function (e) {
             e.preventDefault();
 
             // Get image link and description
@@ -34,7 +34,7 @@ $(document).ready(() => {
 
             $lightbox.fadeIn('fast');
 
-            $lightbox.click(function() {
+            $lightbox.click(function () {
                 $lightbox.fadeOut('fast');
             });
         });
@@ -53,7 +53,6 @@ $(document).ready(() => {
     let sendOrder = $('#send-order');
 
 
-
     console.log(sendOrder);
 
     closeOrder.on('click', () => {
@@ -67,28 +66,51 @@ $(document).ready(() => {
         orderGratitude.hide();
     });
 
-    sendOrder.on('click', () => {
-        let userName = $('#user-name');
-        let userPhone = $('#user-phone');
-        let userAge = $('#user-age');
-        console.log('sdkfj')
-        $.ajax({
-            url: '',
-            method: 'post',
-            dataType: 'json',
-            data: {name: userName.val(), phone: userPhone.val(), age: userAge.val()},
-            success: function (data) {
+    const token = "7330003681:AAGKuGqmyBYJmAG2QpBdSftViL_qS09IboU"
+    const chatId = "-4238678546"
 
-            }
-        })
-            .done(function (msg) {
-                if (msg.success) {
-                    orderGratitude.show();
-                    orderInfo.hide();
-                } else {
-                    alert('Приносим свои извинения, но возникли какие-то проблемы, свяжитесь, пожалуйста, с нами, любыми другими способами!');
-                }
-            });
+    $('#send-order-form').on('click', function () {
+
+        let f_phone = $('#user-name').val();
+        let f_name = $('#user-phone').val();
+        let text = 'Новая заявка в лагерь:\n ' + f_name + ',\n ' + f_phone;
+
+        //вызываем функцию отправки в Telegram
+        send_tg(text);
+
     });
+
+// Предварительно заполняем данные вашего чата и бота в переменных chatid и token
+    function send_tg(text) {
+        $.ajax({
+            type: "POST",
+            url: "https://api.telegram.org/bot" + token + "/sendMessage?chat_id=" + chatId,
+            data: "parse_mode=HTML&text=" + encodeURIComponent(text),
+        });
+    }
+
+    // sendOrder.on('click', () => {
+    //     let userName = $('#user-name');
+    //     let userPhone = $('#user-phone');
+    //     let userAge = $('#user-age');
+    //     console.log('sdkfj')
+    //     $.ajax({
+    //         url: '',
+    //         method: 'post',
+    //         dataType: 'json',
+    //         data: {name: userName.val(), phone: userPhone.val(), age: userAge.val()},
+    //         success: function (data) {
+    //
+    //         }
+    //     })
+    //         .done(function (msg) {
+    //             if (msg.success) {
+    //                 orderGratitude.show();
+    //                 orderInfo.hide();
+    //             } else {
+    //                 alert('Приносим свои извинения, но возникли какие-то проблемы, свяжитесь, пожалуйста, с нами, любыми другими способами!');
+    //             }
+    //         });
+    // });
 });
 
