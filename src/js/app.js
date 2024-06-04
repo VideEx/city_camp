@@ -69,18 +69,29 @@ $(document).ready(() => {
     const token = "7330003681:AAGKuGqmyBYJmAG2QpBdSftViL_qS09IboU"
     const chatId = "-4238678546"
 
-    $('#send-order-form').on('click', function () {
+    let f_name = $('#user-name').val();
+    let f_phone = $('#user-phone').val();
+    let f_age = $('#user-age').val();
+    let text = 'Новая заявка в лагерь:\n' + 'Имя - ' + f_name + '\n' + 'Номер телефона - ' + f_phone + '\n' + 'Возраст ребенка - ' + f_age;
 
-        let f_name = $('#user-name').val();
-        let f_phone = $('#user-phone').val();
-        let f_age = $('#user-age').val();
-        let text = 'Новая заявка в лагерь:\n' + 'Имя - ' + f_name + '\n' + 'Номер телефона - '  + f_phone + '\n' + 'Возраст ребенка - '  + f_age;
+    $('#send-order-form').on('click', function () {
 
         //вызываем функцию отправки в Telegram
         $.ajax({
             type: "POST",
             url: "https://api.telegram.org/bot" + token + "/sendMessage?chat_id=" + chatId,
             data: "parse_mode=HTML&text=" + encodeURIComponent(text),
+            success: function (data) {
+
+            }
+                .done(function (msg) {
+                    if (msg.success) {
+                        orderGratitude.show();
+                        orderInfo.hide();
+                    } else {
+                        alert('Приносим свои извинения, но возникли какие-то проблемы, свяжитесь, пожалуйста, с нами, любыми другими способами!');
+                    }
+                })
         });
 
     });
