@@ -80,7 +80,8 @@ $(document).ready(() => {
         $.ajax({
             type: "POST",
             url: "https://api.telegram.org/bot" + token + "/sendMessage?chat_id=" + chatId,
-            data: "parse_mode=HTML&text=" + encodeURIComponent(text),
+            // data: "parse_mode=HTML&text=" + encodeURIComponent(text),
+            data: encodeURIComponent(text),
             // success: function (data) {
             //
             // }
