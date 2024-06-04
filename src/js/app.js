@@ -73,21 +73,26 @@ $(document).ready(() => {
 
         let f_name = $('#user-name').val();
         let f_phone = $('#user-phone').val();
-        let text = 'Новая заявка в лагерь:\n' + f_name + '\n' + f_phone;
+        let f_age = $('#user-age').val();
+        let text = 'Новая заявка в лагерь:\n' + 'Имя - ' + f_name + '\n' + 'Номер телефона - '  + f_phone + '\n' + 'Возраст ребенка - '  + f_age;
 
         //вызываем функцию отправки в Telegram
-        send_tg(text);
-
-    });
-
-// Предварительно заполняем данные вашего чата и бота в переменных chatid и token
-    function send_tg(text) {
         $.ajax({
             type: "POST",
             url: "https://api.telegram.org/bot" + token + "/sendMessage?chat_id=" + chatId,
             data: "parse_mode=HTML&text=" + encodeURIComponent(text),
         });
-    }
+
+    });
+
+// Предварительно заполняем данные вашего чата и бота в переменных chatid и token
+//     function send_tg(text) {
+//         $.ajax({
+//             type: "POST",
+//             url: "https://api.telegram.org/bot" + token + "/sendMessage?chat_id=" + chatId,
+//             data: "parse_mode=HTML&text=" + encodeURIComponent(text),
+//         });
+//     }
 
     // sendOrder.on('click', () => {
     //     let userName = $('#user-name');
